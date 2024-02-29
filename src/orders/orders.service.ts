@@ -106,9 +106,9 @@ export class OrdersService {
                   "number": "Número de documento"
                 },
                 address: {
-                  street_name: billing.address_1,
-                  street_number: null,
-                  zip_code: "Código postal"
+                    street_name: billing.address_1,
+                    street_number: null,
+                    zip_code: "Código postal"
                 }
             },
             redirect_urls : {
@@ -117,7 +117,6 @@ export class OrdersService {
                 failure: "https://titandecko.com.co/comprar-ahora"
             },
         }
-
         const client = new MercadoPagoConfig({accessToken: process.env.TOKEN_ACCESS_MP_P, options: {timeout: 5000}});
         const preference = new Preference(client); 
         let result = await preference.create({body: body})
@@ -151,10 +150,11 @@ export class OrdersService {
                 transaction_details: formData.transaction_details,
                 callback_url: "https://titandecko.com.co/comprar-ahora"
             }
-
+            
             const client = new MercadoPagoConfig({ accessToken: process.env.TOKEN_ACCESS_MP_P });
             const payment = new Payment(client);
             let result = await payment.create({ body: body});
+            
             return {
                 statusCode: HttpStatus.ACCEPTED,
                 result
