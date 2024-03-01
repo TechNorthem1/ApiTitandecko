@@ -84,7 +84,15 @@ export class OrdersService {
     } 
 
     async preference(data:any):Promise<any> {
-        let {order:{billing, shipping, line_items}, items} = data;
+        
+        let {order:{billing, shipping, line_items, shipments}, items} = data;
+        shipments.receiver_address = {
+            street_name: billing.address_1,
+            country_name:"Colombia",
+            state_name: billing.state,
+            city_name: billing.city
+        }
+
         const body = {
             auto_return: "approved",
             back_urls : {
@@ -116,7 +124,9 @@ export class OrdersService {
                 pending: "https://titandecko.com.co/comprar-ahora",
                 failure: "https://titandecko.com.co/comprar-ahora"
             },
+            shipments
         }
+
         const client = new MercadoPagoConfig({accessToken: process.env.TOKEN_ACCESS_MP_P, options: {timeout: 5000}});
         const preference = new Preference(client); 
         let result = await preference.create({body: body})
@@ -134,7 +144,7 @@ export class OrdersService {
             let {formData} = params
             
             const body = {
-                transaction_amount: formData.transaction_amount,
+                transaction_amount: formData.transaction_amount ,
                 description: `${order.line_items.length} articulos variados`,
                 payment_method_id: formData.payment_method_id,
                 payer: {
