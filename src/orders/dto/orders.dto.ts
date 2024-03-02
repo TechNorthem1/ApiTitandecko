@@ -14,6 +14,17 @@ export class OrderDTO{
     @ApiProperty()
     @IsNotEmpty()
     @IsString()
+    readonly total:string;
+
+    @ApiProperty()
+    @IsNotEmpty()
+    @IsString()
+    readonly shipping_total:string;
+
+
+    @ApiProperty()
+    @IsNotEmpty()
+    @IsString()
     readonly payment_method_title: string;
 
     @ApiProperty()
@@ -44,6 +55,6 @@ export class OrderDTO{
     @ApiProperty()
     @IsOptional()
     @IsNotEmpty()
-    @IsObject()
-    readonly shipping_lines:Object;
+    @IsArray()
+    readonly shipping_lines:[];
 }

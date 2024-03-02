@@ -11,7 +11,9 @@ export interface IOrder {
     billing: IBilling;
     shipping: IShipping;
     line_items:ILineItems[];
-    shipping_lines:Object;
+    shipping_lines:[];
     order_id_woocommerce:number;
     user: Schema.Types.ObjectId;
+    total:string;
+    shipping_total:string;
 }
