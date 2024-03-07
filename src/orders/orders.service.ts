@@ -20,8 +20,9 @@ export class OrdersService {
         try {
             const order = new this.model(orderDTO);
             let {status, paid} = this.validateStatus(order.status);
-            order.status = status;
-            order.set_paid = paid;
+            
+            // order.status = status;
+            order.set_paid = false;
 
             let { id } = await this.sendOrder(order);
             
@@ -176,6 +177,10 @@ export class OrdersService {
 
     async sendOrder(order: OrderDTO): Promise<any>{
         try{
+            if(order.status === "processing"){
+                delete order.set_paid;
+            }
+                        
             let response = await fetch("https://tinco.com.co/wp-json/wc/v3/orders", {
                 method: "POST",
                 headers: {

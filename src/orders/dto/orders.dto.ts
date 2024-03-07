@@ -30,7 +30,7 @@ export class OrderDTO{
     @ApiProperty()
     @IsNotEmpty()
     @IsBoolean()
-    readonly set_paid:boolean;
+    set_paid:boolean;
 
     @ApiProperty()
     @IsNotEmpty()
