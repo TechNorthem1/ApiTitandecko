@@ -25,7 +25,6 @@ export class OrdersService {
             order.set_paid = false;
 
             let { id } = await this.sendOrder(order);
-            
             if(!id){
                 throw new HttpException("orden no generada", HttpStatus.NOT_FOUND);
             }
@@ -260,12 +259,13 @@ export class OrdersService {
     
         products.forEach(product => {
             let cadena = product.stock_status;
+            let url = decodeURIComponent(product.slug).toLowerCase().replace("ñ", "n").replace("²","");
             xml.ele('item')
                 .ele('g:id', product.id).up()
                 .ele('g:region_id', 'CO').up()
                 .ele('g:title').cdata(product.name).up()
                 .ele('g:description').cdata(product.description).up()
-                .ele('g:link', `https://titandecko.com.co/producto/${product.slug}/${product.id}`).up()
+                .ele('g:link', `https://titandecko.com.co/producto/${url}/${product.id}`).up()
                 .ele('g:image_link', `https://titandecko.com.co/_next/image?url=${product?.images[0]?.src}&w=1920&q=75`).up()
                 .ele('g:price', `${product.price} COP`).up()
                 .ele('g:availability', cadena.replace("instock", "in stock")).up()

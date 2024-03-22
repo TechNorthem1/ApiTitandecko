@@ -8,6 +8,7 @@ export const ordersSchema = new Schema({
     billing: {type: Object, required:true},
     shipping: {type: Object, required: true},
     line_items: {type: Array, required:true},
+    coupon_lines: {type: Array, required:true},
     shipping_lines: {type: Array, required:false},
     order_id_woocommerce: {type: Number, required:true},
     total: {type:String, required:true },

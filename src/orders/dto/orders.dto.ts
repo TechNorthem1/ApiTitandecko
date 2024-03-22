@@ -57,4 +57,10 @@ export class OrderDTO{
     @IsNotEmpty()
     @IsArray()
     readonly shipping_lines:[];
+
+    @ApiProperty()
+    @IsOptional()
+    @IsNotEmpty()
+    @IsArray()
+    coupon_lines:[];
 }

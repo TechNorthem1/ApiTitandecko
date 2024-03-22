@@ -16,4 +16,5 @@ export interface IOrder {
     user: Schema.Types.ObjectId;
     total:string;
     shipping_total:string;
+    coupon_lines:[];
 }
