@@ -17,8 +17,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe())
 
   app.use(
-    rateLimit({
-      // windowMs: 15 * 60 * 1000, // 15 minutos
+    rateLimit({ 
       max: 100, // Límite cada IP a 100 peticiones por ventana de tiempo
       standardHeaders: true, // Devuelve la información del rate limit en los headers `RateLimit-*`
       legacyHeaders: false, // Deshabilita los headers `X-RateLimit-*`

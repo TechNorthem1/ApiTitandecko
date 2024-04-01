@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Req, Res} from '@nestjs/common';
 import { OrderDTO } from './dto/orders.dto';
 import { OrdersService } from './orders.service';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';

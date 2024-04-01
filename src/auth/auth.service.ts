@@ -30,10 +30,15 @@ export class AuthService {
             const isValidPassword = await this.validatePassword(password, auth.password);
             return (auth && isValidPassword) ? auth : null;
         }catch(e){
-            throw new HttpException(
-                "Credenciales invalidas",
-                HttpStatus.NOT_FOUND
-            )
+            //throw new HttpException(
+              //  "Credenciales invalidas",
+                //HttpStatus.UNAUTHORIZED
+            //)
+            return {
+                code: HttpStatus.UNAUTHORIZED,
+                status: "unauthorized",
+                message: "Credenciales invalidas"
+            }
         }
     }
 
@@ -84,10 +89,11 @@ export class AuthService {
                 client
             }
         }catch(error){
-            throw new HttpException (
-                "Credenciales incorrectas",
-                HttpStatus.BAD_REQUEST,
-            )
+            return {
+                statusCode: HttpStatus.UNAUTHORIZED,
+                status: "unauthorized",
+                message: "Credenciales Incorrectas"
+            } 
         }
 
     }
