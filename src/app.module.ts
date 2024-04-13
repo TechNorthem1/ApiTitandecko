@@ -7,6 +7,7 @@ import { OrdersModule } from './orders/orders.module';
 import { AuthModule } from './auth/auth.module';
 import { LocationsModule } from './locations/locations.module';
 import { QuestionsModule } from './questions/questions.module';
+import { UploadsModule } from './uploads/uploads.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { QuestionsModule } from './questions/questions.module';
     OrdersModule,
     AuthModule,
     LocationsModule,
-    QuestionsModule
+    QuestionsModule,
+    UploadsModule
   ],
   controllers: [],
   providers: [AppService],

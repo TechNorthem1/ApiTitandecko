@@ -12,7 +12,7 @@ export class QuestionsService {
   async create(questionDTO:QuestionDTO):Promise<any>{
     try {
       const question = new this.model(questionDTO);
-      console.log(question)
+
       question.save();
       return {
         status: HttpStatus.OK,

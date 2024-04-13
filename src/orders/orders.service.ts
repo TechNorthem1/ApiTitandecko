@@ -20,7 +20,8 @@ export class OrdersService {
         try {
             const order = new this.model(orderDTO);
             let {status, paid} = this.validateStatus(order.status);
-            
+            delete order._id
+
             // order.status = status;
             order.set_paid = false;
 
@@ -325,7 +326,6 @@ export class OrdersService {
          // Escribir el nuevo libro de trabajo
          XLSX.writeFile(workbook, filePath);
        }
-   }
-
+    }
 
 }

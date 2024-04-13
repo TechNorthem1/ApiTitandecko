@@ -3,3 +3,4 @@
 dist
 node_modules
 cart_abandonment.xlsx
+files/*
