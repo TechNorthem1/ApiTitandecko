@@ -226,10 +226,11 @@ export class OrdersService {
             let page = 1;
             let perPage = 100;
         
-            while (true) {
-                
+            while (true) { 
                 try {
-                    const response = await fetch(`https://mstitandecko.com.co/wp-json/wc/v3/products?stock_status=instock&status=publish&per_page=${perPage}&page=${page}`, {method: "GET", headers: {"Authorization": `Basic Y2tfZDY0MWI4Y2VkODMyZjE3NTFjODk4NzMwMmI5ZjkwMzc5NGFjYjA5ZTpjc18xMDdiZDZkZDMxMjdlYjBlM2MyM2U2ZTE3MTU1YWJlODNjNjgwMjcy`}});
+                    const response = await fetch(
+                        `https://mstitandecko.com.co/wordpress/wp-json/wc/v3/products?stock_status=instock&status=publish&per_page=${perPage}&page=${page}`, 
+                        {method: "GET", cache: "no-cache", headers: {"Authorization": `Basic Y2tfZDY0MWI4Y2VkODMyZjE3NTFjODk4NzMwMmI5ZjkwMzc5NGFjYjA5ZTpjc18xMDdiZDZkZDMxMjdlYjBlM2MyM2U2ZTE3MTU1YWJlODNjNjgwMjcy`}});
                     const products = await response.json();
                     if (products.length === 0) {
                         break; // No hay más productos

@@ -43,8 +43,16 @@ export class UsersService {
     }
 
     async update(id: string, userDTO:UserDTO):Promise<any>{
-        try {
+        try {   
+
             const user = await this.model.findByIdAndUpdate(id, userDTO, {new:true});
+            
+            if (user === null || user === undefined) {
+                return {
+                    status: HttpStatus.NOT_FOUND,
+                    message: "no se encontro el usuario"
+                }
+            }
             return {
                 status: HttpStatus.OK,
                 message: "Datos del usuario actualizados correctamente",
@@ -53,7 +61,8 @@ export class UsersService {
         } catch (error) {
             return {
                 status: HttpStatus.BAD_REQUEST,
-                message: "Ha ocurrido un error al actualizar datos"
+                message: "Ha ocurrido un error al actualizar datos",
+                error
             }
         }
     }
