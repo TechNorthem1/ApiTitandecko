@@ -21,9 +21,10 @@ export class OrdersService {
             const order = new this.model(orderDTO);
             let {status, paid} = this.validateStatus(order.status);
             delete order._id
-
-            // order.status = status;
-            order.set_paid = false;
+            
+            // al utilizar wompi comentar la linea 26 y colocar false en order.set_paid
+            order.status = status;
+            order.set_paid = paid;
 
             let { id } = await this.sendOrder(order);
             if(!id){

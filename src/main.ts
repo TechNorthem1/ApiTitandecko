@@ -11,7 +11,7 @@ import { configCors } from './common/configs/cors-config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors(configCors);
+  // app.enableCors(configCors);
   app.use(cors());
   app.useGlobalFilters(new AllExceptionFilter());
   app.useGlobalInterceptors(new TimeOutInterceptor());
