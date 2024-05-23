@@ -97,9 +97,9 @@ export class OrdersService {
 
         const body = {
             back_urls : {
-                success: "http://localhost:3000/detalle-compra",
-                pending: "http://localhost:3000/detalle-compra",
-                failure: "http://localhost:3000/comprar-ahora",
+                success: "https://titandecko.com.co/detalle-compra",
+                pending: "https://titandecko.com.co/detalle-compra",
+                failure: "https://titandecko.com.co/comprar-ahora",
             },
             auto_return: "all",
             items,
@@ -122,9 +122,9 @@ export class OrdersService {
                 }
             },
             redirect_urls : {
-                success: "http://localhost:3000/detalle-compra",
-                pending: "http://localhost:3000/detalle-compra",
-                failure: "http://localhost:3000/detalle-compra"
+                success: "https://titandecko.com.co/detalle-compra",
+                pending: "https://titandecko.com.co/detalle-compra",
+                failure: "https://titandecko.com.co/detalle-compra"
             },
             shipments
         }
