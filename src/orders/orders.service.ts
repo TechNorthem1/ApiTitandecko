@@ -96,12 +96,12 @@ export class OrdersService {
         }
 
         const body = {
-            auto_return: "approved",
             back_urls : {
-                success: "https://titandecko.com.co/comprar-ahora",
-                pending: "https://titandecko.com.co/comprar-ahora",
-                failure: "https://titandecko.com.co/comprar-ahora",
+                success: "http://localhost:3000/detalle-compra",
+                pending: "http://localhost:3000/detalle-compra",
+                failure: "http://localhost:3000/comprar-ahora",
             },
+            auto_return: "all",
             items,
             payer: {
                 name: billing.first_name,
@@ -122,9 +122,9 @@ export class OrdersService {
                 }
             },
             redirect_urls : {
-                success: "https://titandecko.com.co/comprar-ahora",
-                pending: "https://titandecko.com.co/comprar-ahora",
-                failure: "https://titandecko.com.co/comprar-ahora"
+                success: "http://localhost:3000/detalle-compra",
+                pending: "http://localhost:3000/detalle-compra",
+                failure: "http://localhost:3000/detalle-compra"
             },
             shipments
         }
